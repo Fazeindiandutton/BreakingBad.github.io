@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Bad - Official Fan Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #00d4ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/><text x="600" y="300" font-size="48" fill="%23444" text-anchor="middle" dominant-baseline="middle">BREAKING BAD</text></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h2 {
+            font-size: 4em;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #ff5722;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin: 3rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 0.5rem;
+        }
+
+        .about {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .character-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .character-header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .character-header h3 {
+            font-size: 1.5em;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-body {
+            padding: 1.5rem;
+        }
+
+        .character-body p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9em;
+        }
+
+        .stat {
+            background: #f0f0f0;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 2em;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.95em;
+        }
+
+        .seasons {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .season {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-left: 4px solid #ff6b35;
+            border-radius: 4px;
+        }
+
+        .season h4 {
+            color: #ff6b35;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .quotes {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        .quote {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #ff6b35;
+        }
+
+        .quote-text {
+            font-size: 1.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-author {
+            font-size: 0.9em;
+            font-style: normal;
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>⚗️ BREAKING BAD</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#characters">Characters</a></li>
+                <li><a href="#highlights">Highlights</a></li>
+                <li><a href="#episodes">Seasons</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>BREAKING BAD</h2>
+        <p>From Mr. Chips to Scarface</p>
+        <a href="#about" class="cta-button">Learn More</a>
+    </section>
+
+    <div class="container">
+        <section id="about">
+            <h2>About the Series</h2>
+            <div class="about">
+                <p>Breaking Bad is a crime thriller television series created and produced by Vince Gilligan. The show aired on AMC from 2008 to 2013 and consists of five seasons, with a total of 62 episodes.</p>
+                <p style="margin-top: 1rem;">The series follows Walter White, a high school chemistry teacher who turns to cooking methamphetamine alongside his former student, Jesse Pinkman, in order to secure his family's financial future after his terminal lung cancer diagnosis. What follows is a gripping saga of transformation, crime, and moral decay.</p>
+                <p style="margin-top: 1rem;">Breaking Bad is widely regarded as one of the greatest television series of all time, earning critical acclaim for its writing, cinematography, and outstanding performances from its cast.</p>
+            </div>
+
+            <div class="quotes">
+                <div class="quote">
+                    <div class="quote-text">"You are the smartest guy I ever met, and you're too stupid to see..."</div>
+                    <div class="quote-author">— Mike Ehrmantraut</div>
+                </div>
+                <div class="quote">
+                    <div class="quote-text">"I am the one who knocks!"</div>
+                    <div class="quote-author">— Walter White</div>
+                </div>
+                <div class="quote">
+                    <div class="quote-text">"Yeah, science!"</div>
+                    <div class="quote-author">— Jesse Pinkman</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="characters">
+            <h2>Main Characters</h2>
+            <div class="characters">
+                <div class="character-card">
+                    <div class="character-header">
+                        <h3>Walter White</h3>
+                        <p>Bryan Cranston</p>
+                    </div>
+                    <div class="character-body">
+                        <p>A high school chemistry teacher who turns to cooking meth after his lung cancer diagnosis. Walter's descent into the criminal underworld forms the central narrative of the series.</p>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-label">Alias:</span> Heisenberg</div>
+                            <div class="stat"><span class="stat-label">Status:</span> Deceased</div>
+                            <div class="stat"><span class="stat-label">Specialty:</span> Chemistry</div>
+                            <div class="stat"><span class="stat-label">Role:</span> Protagonist</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-header">
+                        <h3>Jesse Pinkman</h3>
+                        <p>Aaron Paul</p>
+                    </div>
+                    <div class="character-body">
+                        <p>A former student of Walter White who becomes his partner in crime. Jesse's journey is marked by remorse, trauma, and his struggle for redemption throughout the series.</p>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-label">Alias:</span> Cap'n Cook</div>
+                            <div class="stat"><span class="stat-label">Status:</span> Escaped</div>
+                            <div class="stat"><span class="stat-label">Specialty:</span> Manufacturing</div>
+                            <div class="stat"><span class="stat-label">Role:</span> Co-protagonist</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-header">
+                        <h3>Hank Schrader</h3>
+                        <p>Dean Norris</p>
+                    </div>
+                    <div class="character-body">
+                        <p>Walter's brother-in-law and a DEA agent. Hank's investigation into Heisenberg becomes increasingly personal as he closes in on the truth.</p>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-label">Occupation:</span> DEA Agent</div>
+                            <div class="stat"><span class="stat-label">Status:</span> Deceased</div>
+                            <div class="stat"><span class="stat-label">Hobby:</span> Minerals</div>
+                            <div class="stat"><span class="stat-label">Role:</span> Antagonist</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-header">
+                        <h3>Skyler White</h3>
+                        <p>Anna Gunn</p>
+                    </div>
+                    <div class="character-body">
+                        <p>Walter's wife who eventually discovers his secret and becomes increasingly trapped in his criminal world, forced to make impossible moral choices.</p>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-label">Occupation:</span> Bookkeeper</div>
+                            <div class="stat"><span class="stat-label">Status:</span> Alive</div>
+                            <div class="stat"><span class="stat-label">Children:</span> 2</div>
+                            <div class="stat"><span class="stat-label">Role:</span> Key Character</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-header">
+                        <h3>Mike Ehrmantraut</h3>
+                        <p>Jonathan Banks</p>
+                    </div>
+                    <div class="character-body">
+                        <p>A former cop turned professional fixer. Mike operates with cold precision and becomes Walter's closest ally in the drug trade, though their relationship is fraught with tension.</p>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-label">Specialty:</span> Problem Solver</div>
+                            <div class="stat"><span class="stat-label">Status:</span> Deceased</div>
+                            <div class="stat"><span class="stat-label">Loyalty:</span> Gus</div>
+                            <div class="stat"><span class="stat-label">Role:</span> Antagonist</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-header">
+                        <h3>Gus Fring</h3>
+                        <p>Giancarlo Esposito</p>
+                    </div>
+                    <div class="character-body">
+                        <p>A drug lord who operates a fast-food chain as a front for his empire. Gus is known for his precise, calculated, and ruthless approach to business and revenge.</p>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-label">Business:</span> Los Pollos Hermanos</div>
+                            <div class="stat"><span class="stat-label">Status:</span> Deceased</div>
+                            <div class="stat"><span class="stat-label">Ruthlessness:</span> Extreme</div>
+                            <div class="stat"><span class="stat-label">Role:</span> Main Antagonist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="highlights">
+            <h2>Series Highlights</h2>
+            <div class="highlights">
+                <div class="highlight-box">
+                    <h3>62</h3>
+                    <p>Total Episodes</p>
+                </div>
+                <div class="highlight-box">
+                    <h3>5</h3>
+                    <p>Seasons</p>
+                </div>
+                <div class="highlight-box">
+                    <h3>16</h3>
+                    <p>Emmy Awards</p>
+                </div>
+                <div class="highlight-box">
+                    <h3>2008-2013</h3>
+                    <p>Aired</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="episodes">
+            <h2>Seasons Overview</h2>
+            <div class="seasons">
+                <div class="season">
+                    <h4>Season 1 (2008)</h4>
+                    <p>Walter White, a struggling high school teacher, is diagnosed with terminal lung cancer. Desperate to provide for his family, he partners with Jesse Pinkman to cook methamphetamine. 7 episodes</p>
+                </div>
+                <div class="season">
+                    <h4>Season 2 (2009)</h4>
+                    <p>Walter and Jesse expand their operation while dealing with cartel pressure and personal conflicts. The body count rises as they navigate dangerous criminal waters. 13 episodes</p>
+                </div>
+                <div class="season">
+                    <h4>Season 3 (2010)</h4>
+                    <p>Walter and Jesse work for Gus Fring, a seemingly legitimate businessman. Alliances form and break as the stakes grow higher. 13 episodes</p>
+                </div>
+                <div class="season">
+                    <h4>Season 4 (2011)</h4>
+                    <p>Walter's empire expands as he outmaneuvers Gus Fring with shocking consequences. Tension reaches a boiling point. 14 episodes</p>
+                </div>
+                <div class="season">
+                    <h4>Season 5 (2012-2013)</h4>
+                    <p>The final season brings everything to a crescendo as Walter's lies unravel and he faces the full consequences of his actions. 16 episodes</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why Breaking Bad Stands Out</h2>
+            <div class="about">
+                <ul style="margin-left: 2rem; line-height: 2;">
+                    <li><strong>Exceptional Writing:</strong> Creator Vince Gilligan crafted a masterpiece with incredible character development and plotting.</li>
+                    <li><strong>Outstanding Performances:</strong> Bryan Cranston's transformation from mild-mannered teacher to ruthless drug lord is iconic.</li>
+                    <li><strong>Moral Complexity:</strong> The series explores difficult ethical questions without easy answers.</li>
+                    <li><strong>Cinematography:</strong> Shot in New Mexico with stunning visuals that enhance the storytelling.</li>
+                    <li><strong>Perfect Ending:</strong> Breaking Bad concluded with a finale that satisfied critics and viewers alike.</li>
+                    <li><strong>Cultural Impact:</strong> The series revolutionized television and proved that TV dramas could match films in quality.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Breaking Bad Fan Site. Not affiliated with AMC or Sony Pictures.</p>
+        <p>Breaking Bad created by Vince Gilligan | Starring Bryan Cranston, Aaron Paul, and an incredible ensemble cast</p>
+        <p>For more information, visit the official AMC website</p>
+    </footer>
+</body>
+</html>
